@@ -22,7 +22,7 @@ We want to build a simple React app which will allow people to visualize a [tree
 
 - The app should have two pages: the (1) data import page and the (2) visualization page.
 - The data import page should have a textarea and a submit button.
-- Users would enter CSV data with the following format: `id, color, shape, parent`
+- Users would enter CSV data, where each row has the following format: `id, color, shape, parent`
 - The `id` would be a unique integer
 - The `color` would be a hexadecimal color code, such as `#1F2F55`
 - The `shape` field would be either `square` or `circle`
@@ -34,6 +34,10 @@ We want to build a simple React app which will allow people to visualize a [tree
 - Each node should have the color and shape match its data
 - Lines should connect parents and children
 - There should be a back button to let the user go back to the input page (also, the tree input text should still be present in the testarea)
+
+## Example Dataset
+
+TODO: create a small example dataset and a large example dataset, stick them in CSV files in the repo, and mentino where they are here in the documentation.
 
 ## Evaluation
 

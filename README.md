@@ -45,8 +45,12 @@ Your submission will be evaluated for:
 - Tests (there is no need for UI testing---only high-value unit tests are expected)
 - Good [commit messages](https://chris.beams.io/posts/git-commit/)
 
-To submit your solution, please zip up your entire repository, and email it to
-`info@innolitics.com`.
+To submit your solution, please create a [git bundle](http://schacon.github.io/git/git-bundle.html) and email it to
+`info@innolitics.com`.  You can create a git bundle by running the following commands:
+
+```
+git bundle create ~/Desktop/react-challenge.bundle master
+```
 
 If you have any questions about the requirements, please ask!  Part of being a good
 engineer is knowing when to clarify requirements.

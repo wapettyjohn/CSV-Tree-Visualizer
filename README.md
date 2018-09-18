@@ -4,15 +4,11 @@
 
 You must have Node installed (we tested it with node version 10.0.0).
 
-You will then need to run the following commands from the root of the repository:
+You will need to run `npm install` from the root of the repository to install everything.
 
-```
-npm install
-```
+You can start a test sever (which will recompile for you automatically) using `npm run start`.
 
 You can compile everything using `npm run build`.
-
-After compiling everything, you can run a test sever (which will recompile for you automatically) using `npm run start`.
 
 Finally, you can run the Jest test suite using `npm run test`.
 
@@ -28,16 +24,17 @@ We want to build a simple React app which will allow people to visualize a [tree
 - The `shape` field would be either `square` or `circle`
 - The `parent` field would be the id of its parent node
 - The `parent` value for the root of the tree will be its own `id`
-- After submitting the data, the user should be taken to the visualization page
+- After submitting the data, the user should automatically be taken to the visualization page
 - The visualization page should display the tree structure
 - The root node should be at the top, and each level of the hierarchy should be further down the page
 - Each node should have the color and shape match its data
 - Lines should connect parents and children
-- There should be a back button to let the user go back to the input page (also, the tree input text should still be present in the testarea)
+- There should be a back button to let the user go back to the data import page
+- The CSV input text should still be present when the user returns to the data import page
 
 ## Example Dataset
 
-TODO: create a small example dataset and a large example dataset, stick them in CSV files in the repo, and mentino where they are here in the documentation.
+See `small.csv` and `big.csv` for example datasets.
 
 ## Evaluation
 

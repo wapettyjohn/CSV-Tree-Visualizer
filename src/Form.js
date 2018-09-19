@@ -6,11 +6,10 @@ export default class Form extends React.Component {
 
 	onSubmit = (event) => {
 		event.preventDefault();
-		const rows = this.state.data.split("\n");
+		const rows = this.state.data.split("\n"); // split textarea into rows
 		let nodes = [];
 		for (const row of rows) {
-			const cols = row.split(",");
-			const parentId = parseInt(cols[3]);
+			const cols = row.split(","); // split each row into columns
 			const newNode = new Node({
 				id: parseInt(cols[0]),
 				color: cols[1],
@@ -18,18 +17,18 @@ export default class Form extends React.Component {
 				children: [],
 			});
 			/*
-			 * we need to push the newNode onto the nodes array before setting its
-			 * parent in case it's the root, in which case it will be its own parent
+			 * push newNode onto nodes array before setting its parent 
+			 * in case it's the root, when it will be its own parent
 			 */
 			nodes.push(newNode);
 
 			const newNodeId = newNode.props.id;
 			/*
-			 * now that the newNode instance has been added to the nodes array,
-			 * we can safely look the the newNode's parent
+			 * now that newNode instance is added to nodes array
+			 * we can safely look for the newNode's parent
 			 */
 			const parent = nodes.filter(
-				node => node.props.id === parentId
+				node => node.props.id === parseInt(cols[3]) // find the parent by id
 			)[0]; // get parent node
 			const siblings = parent.props.children; // you can be your own sibling
 			siblings.push(newNodeId); // push id to array of siblings

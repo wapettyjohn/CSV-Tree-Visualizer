@@ -15,19 +15,21 @@ export default class Form extends React.Component {
 				id: parseInt(cols[0]),
 				color: cols[1],
 				shape: cols[2],
-				adjacencyList: {parentId: 1}, // initialize adjacencyList with parent's id
+				children: [],
 			});
 			nodes.push(newNode);
+
+			const newNodeId = newNode.props.id;
 			const parent = nodes.filter(
 				node => node.props.id === parentId
 			)[0]; // get parent node
-			let foo = parent.props.adjacencyList;
-			let bar = newNode.props.id;
-			foo[bar] ? foo[bar] += 1 : foo[bar] = 1; // add id to parent's adjacency list
+			const parentsChildren = parent.props.children;
+			parentsChildren.push(newNodeId); // push id to array of parent's children
 		}
 
-		const root = nodes.filter(node => node.props.adjacencyList[node.props.id])[0];
-		console.log(root);
+		// root is unique element with self as child node (self-loop)
+		const root = nodes.filter(node => node.props.children[node.props.id])[0];
+		console.log(nodes);
 	}
 
 	render() {

@@ -5,6 +5,7 @@ import Vertex from './Vertex.js';
 export default class App extends React.Component {
 	state = {
 		data: '',
+		root: '',
 	}
 
 	onUpdate = (val) => {
@@ -13,9 +14,9 @@ export default class App extends React.Component {
     })
   };
 
-	onSubmit = () => {
+	handleData = (data) => {
 		let vertices = [];  // init array of vertices to build
-		const rows = this.state.data.split('\n'); // split text into rows
+		const rows = data.split('\n'); // split text into rows
 		for (const row of rows) {
 			const cols = row.split(','); // split each row into columns
 			const newVertex = new Vertex({
@@ -41,19 +42,29 @@ export default class App extends React.Component {
 			siblings.push(newVertex); // push newVertex to array of siblings
 		}
 
+		return vertices;
+	}
+
+	getRoot = (vertices) => {
 		// root is unique element with self as child vertex (self-loop)
-		const root = vertices.filter(
+		return vertices.filter(
 			vertex => vertex.props.children[vertex.props.id]
 		)[0];
+	}
 
-		console.log(vertices);
+	onSubmit = () => {
+		const vertices = this.handleData(this.state.data);
+		const root = this.getRoot(vertices);
+		// recursively build tree from root
+
+		console.log(root);
 	}
 
 	render() {
 		return (
 			<div id='App'>
 				<Form onUpdate={this.onUpdate} onSubmit={this.onSubmit}/>
-				<Vertex passedVal={this.state.data} />
+				<Vertex passedVal='foo' />
 			</div>
 		);
 	}

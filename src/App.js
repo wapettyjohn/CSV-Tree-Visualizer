@@ -43,21 +43,17 @@ export default class App extends React.Component {
 			}
 		}
 
-		return vertices;
-	}
-
-	getRoot = (vertices) => {
-		console.log('Getting root vertex...');
 		// root is the unique element with itself as a child vertex (self-loop)
-		return vertices.filter(
+		const root = vertices.filter(
 			vertex => vertex.children[vertex.id]
 		)[0];
+
+		return root;
 	}
 
 	onSubmit = () => {
 		console.log('Data submitted...');
-		const vertices = this.handleData(this.state.data);
-		const root = this.getRoot(vertices);
+		const root = this.handleData(this.state.data);
 		this.setState({root: root});
 	}
 

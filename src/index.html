@@ -5,20 +5,43 @@
     <title>Innolitics React Challenge</title>
 
     <style>
-      .treeContainer {
-        text-align: center;
+      form.form {
+        width: 38.196601125%;
       }
-      .tree {
-        list-style-type: none;
+      textarea.textarea {
+        width: 100%;
+      }
+      div.treeContainer {
+        display: inline-block;
+      }
+      span.rootId,
+      ul.tree,
+      ul.tree ul {
+        list-style: none;
         margin: 0;
         padding: 0;
       }
-      .vertex {
+      ul.tree ul {
+        margin-left: 1em;
+      }
+      ul.tree li {
+        margin-left: 0.35em;
+        border-left: thin solid #000;
+      }
+      ul.tree li:last-child {
+        border-left: none;
+      }
+      ul.tree li:before {
+        width: 0.9em;
+        height: 0.6em;
+        margin-right: 0.1em;
+        vertical-align: top;
+        border-bottom: thin solid #000;
+        content: "";
         display: inline-block;
       }
-      .rootId {
-        background-color: black;
-        color: white;
+      ul.tree li:last-child:before {
+        border-left: thin solid #000;
       }
     </style>
 </head>

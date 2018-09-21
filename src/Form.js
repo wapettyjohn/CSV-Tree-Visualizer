@@ -17,8 +17,8 @@ export default class Form extends React.Component {
 
 	render() {
 		return (
-			<form>
-				<textarea
+			<form className="form">
+				<textarea className="textarea"
 					placeholder='Comma separated values...'
 					value={this.state.data}
 					onChange={this.update}

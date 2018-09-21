@@ -22,6 +22,10 @@ export default class Tree extends React.Component {
 	}
 
 	render() {
-		return this.renderTree(this.props.root);
+		return (
+			<div className="treeContainer">
+				{this.renderTree(this.props.root)}
+			</div>
+		);
 	}
 }

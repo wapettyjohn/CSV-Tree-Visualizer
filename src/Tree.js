@@ -5,7 +5,7 @@ export default class Tree extends React.Component {
 		if (root.children) {
 			return (
 				<React.Fragment>
-					<span className='rootId'>{root.id}</span>
+					<span className={`rootId ${root.shape}`} style={{backgroundColor: root.color}}>{root.id}</span>
 					<ul className='tree'>
 						{root.children.map(child => (
 							<li className='vertex' key={child.id}>

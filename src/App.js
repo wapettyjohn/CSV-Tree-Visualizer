@@ -5,7 +5,8 @@ import Tree from './Tree.js';
 export default class App extends React.Component {
 	state = {
 		data: '',
-		root: {children:[]}
+		root: {children:[]},
+		sidebarDisplay: 'hidden',
 	}
 
 	onUpdate = (val) => {
@@ -15,7 +16,6 @@ export default class App extends React.Component {
   };
 
 	handleData = (data) => {
-		console.log('Handling data...');
 		let vertices = [];  // init array of vertices to build
 		const rows = data.split('\n'); // split text into rows
 		for (const row of rows) {
@@ -52,16 +52,22 @@ export default class App extends React.Component {
 	}
 
 	onSubmit = () => {
-		console.log('Data submitted...');
 		const root = this.handleData(this.state.data);
-		this.setState({root: root});
+		this.setState({
+			root: root,
+			sidebarDisplay: 'displayed',
+		});
 	}
 
 	render() {
 		return (
-			<div id='App'>
-				<Form onUpdate={this.onUpdate} onSubmit={this.onSubmit}/>
-				<Tree root={this.state.root} />
+			<div className='app' id='App'>
+				<div className='formWrapper'>
+					<Form onUpdate={this.onUpdate} onSubmit={this.onSubmit}/>
+				</div>
+				<div className={`treeWrapper ${this.state.sidebarDisplay}`}>
+					<Tree root={this.state.root} />
+				</div>
 			</div>
 		);
 	}

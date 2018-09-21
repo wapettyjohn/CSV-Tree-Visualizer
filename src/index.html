@@ -5,16 +5,68 @@
     <title>Innolitics React Challenge</title>
 
     <style>
-      form.form {
-        width: 38.196601125%;
+      body {
+        background: #7F7FD5;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
       }
+
+      div.hidden {
+        left: 61.803398875%;
+      }
+
+      div.displayed {
+        left: 0;
+      }
+
+      div.app {
+        display: flex;
+      }
+
+      div.formWrapper {
+        width: 38.196601125%;
+        height: 100vh;
+      }
+
+      div.treeWrapper {
+        min-height: 100vh;
+        background-color: white;
+        width: 61.803398875%;
+        text-align: center;
+        padding: 24px 0;
+        position: relative;
+        transition: left 0.75s;
+      }
+
+      form.form {
+        margin: 0 auto;
+        width: 61.803398875%;
+      }
+
       textarea.textarea {
+        height: 38vh;
         width: 100%;
       }
       div.treeContainer {
         display: inline-block;
+        text-align: left;
       }
-      span.rootId,
+      span.rootId {
+        list-style: none;
+        margin: 0;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        line-height: 32px;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: white;
+      }
+      span.circle { border-radius: 100%; }
       ul.tree,
       ul.tree ul {
         list-style: none;
@@ -22,19 +74,19 @@
         padding: 0;
       }
       ul.tree ul {
-        margin-left: 1em;
+        margin-left: 22px;
       }
       ul.tree li {
-        margin-left: 0.35em;
+        margin-left: 16px;
         border-left: thin solid #000;
       }
       ul.tree li:last-child {
         border-left: none;
       }
       ul.tree li:before {
-        width: 0.9em;
-        height: 0.6em;
-        margin-right: 0.1em;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
         vertical-align: top;
         border-bottom: thin solid #000;
         content: "";

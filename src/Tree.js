@@ -4,28 +4,24 @@ export default class Tree extends React.Component {
 	renderTree(root) {
 		if (root.children) {
 			return (
-				<div>
-					<strong>{root.id}</strong>
-					<ul>
+				<React.Fragment>
+					<span className='rootId'>{root.id}</span>
+					<ul className='tree'>
 						{root.children.map(child => (
-							<li key={child.id}>
+							<li className='vertex' key={child.id}>
 								{this.renderTree(child)}
 							</li>
 						))}
 					</ul>
-				</div>
+				</React.Fragment>
 			);
 		}
 		else {
-			return <span>{root.id}</span>;
+			return <span className='rootId'>{root.id}</span>;
 		}
 	}
 
 	render() {
-		return (
-			<div>
-				{this.renderTree(this.props.root)}
-			</div>
-		);
+		return this.renderTree(this.props.root);
 	}
 }

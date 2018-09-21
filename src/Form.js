@@ -1,5 +1,4 @@
 import React from 'react';
-import Vertex from './Vertex.js';
 
 export default class Form extends React.Component {
 	state = {

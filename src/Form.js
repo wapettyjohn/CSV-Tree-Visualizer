@@ -7,7 +7,7 @@ export default class Form extends React.Component {
 
 	update = (e) => {
     this.props.onUpdate(e.target.value);
-    this.setState({data: e.target.value});
+    this.setState({ data: e.target.value });
   };
 
 	submit = (e) => {
@@ -19,12 +19,12 @@ export default class Form extends React.Component {
 		return (
 			<form className="form">
 				<textarea className="textarea"
-					placeholder='Enter comma-separated values...'
+					placeholder='Enter CSV data...'
 					value={this.state.data}
 					onChange={this.update}>
 				</textarea>
 
-				<button onClick={this.submit}>Submit</button>
+				<button className='submit' onClick={this.submit}>Submit</button>
 			</form>
 		);
 	}

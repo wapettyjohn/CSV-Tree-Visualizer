@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
+
     <title>Innolitics React Challenge</title>
 
     <style>
+      div.hidden { right: calc(-62% - 3px); }
+      div.displayed { right: 0; }
+
       body {
         margin: 0;
         min-height: 100vh;
@@ -18,7 +22,36 @@
         margin: 3% auto;
       }
 
-      button {
+      div.app { display: flex; }
+
+      div.formWrapper {
+        width: 38%;
+        height: 215vh;
+        background: rgb(218,218,218);
+        border: solid rgb(218,218,218) 6px;
+      }
+
+      form.form {
+        margin: 18% auto 0;
+        padding: 10% 10% 4%;
+        width: 62%;
+        background-color: rgb(0,97,158);
+        border-radius: 10%;
+        border: solid 6px white;
+      }
+
+      textarea.textarea {
+        height: 38vh;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+        padding: 5% 0;
+        resize: none;
+        border: none;
+        font-size: 23px;
+      }
+
+      button.submit {
         width: 27%;
         display: block;
         margin: 0 auto;
@@ -32,31 +65,9 @@
         transition: background-color 0.2s;
       }
 
-      button:hover {
+      button.submit:hover {
         color: white;
         background-color: rgb(158, 158, 158);
-      }
-
-      div.backArrowWrapper {
-        height: 100%;
-        margin-bottom: 6%;
-        background: rgb(158,158,158);
-        padding-bottom: 11.5%;
-      }
-
-      pre {
-        background: rgb(218,218,218);
-        margin: 0;
-        padding: 3%;
-        width: 19%;
-        text-align: center;
-        font-size: 15px;
-        border: solid 10px rgb(158,158,158);
-        overflow: hidden;
-      }
-
-      div.hidden {
-        right: -62%;
       }
 
       div.sampleData {
@@ -64,14 +75,6 @@
         background-color: white;
         border-top: solid rgb(0,97,158) 12px;
         border-bottom: solid rgb(0,97,158) 12px;
-      }
-
-      div.displayed {
-        right: 0;
-      }
-
-      div.app {
-        display: flex;
       }
 
       h2.dataHeading {
@@ -90,11 +93,15 @@
         align-items: start;
       }
 
-      div.formWrapper {
-        width: 38%;
-        height: 215vh;
+      pre.sample {
         background: rgb(218,218,218);
-        border: solid rgb(218,218,218) 6px;
+        margin: 0;
+        padding: 3%;
+        width: 19%;
+        text-align: center;
+        font-size: 15px;
+        border: solid 10px rgb(158,158,158);
+        overflow: hidden;
       }
 
       div.treeWrapper {
@@ -109,13 +116,11 @@
         border-left: solid 3px rgb(157, 157, 157);
       }
 
-      form.form {
-        margin: 18% auto 0;
-        padding: 10% 10% 4%;
-        width: 62%;
-        background-color: rgb(0,97,158);
-        border-radius: 10%;
-        border: solid 6px white;
+      div.backArrowWrapper {
+        height: 100%;
+        margin-bottom: 6%;
+        background: rgb(158,158,158);
+        padding-bottom: 11.5%;
       }
 
       span.backArrow {
@@ -139,20 +144,40 @@
         background-color: rgb(218, 218, 218);
       }
 
-      textarea.textarea {
-        height: 38vh;
-        width: 100%;
-        text-align: center;
-        font-size: 15px;
-        padding-top: 25%;
-        resize: none;
-        border: none;
-      }
       div.treeContainer {
         display: inline-block;
         text-align: left;
       }
-      span.rootId {
+
+      ul.tree,
+      ul.tree ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.tree ul { margin-left: 22px; }
+
+      ul.tree li {
+        margin-left: 16px;
+        border-left: thin solid black;
+      }
+
+      ul.tree li:last-child { border-left: none; }
+
+      ul.tree li:before {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        vertical-align: top;
+        border-bottom: thin solid black;
+        content: "";
+        display: inline-block;
+      }
+
+      ul.tree li:last-child:before { border-left: thin solid black; }
+
+      span.vertexId {
         list-style: none;
         margin: 0;
         display: inline-block;
@@ -164,38 +189,12 @@
         font-weight: bold;
         color: white;
       }
+
       span.circle { border-radius: 100%; }
-      ul.tree,
-      ul.tree ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      ul.tree ul {
-        margin-left: 22px;
-      }
-      ul.tree li {
-        margin-left: 16px;
-        border-left: thin solid #000;
-      }
-      ul.tree li:last-child {
-        border-left: none;
-      }
-      ul.tree li:before {
-        width: 16px;
-        height: 16px;
-        margin-right: 8px;
-        vertical-align: top;
-        border-bottom: thin solid #000;
-        content: "";
-        display: inline-block;
-      }
-      ul.tree li:last-child:before {
-        border-left: thin solid #000;
-      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class='container' id='container'></div>
-</body>
+  </body>
 </html>

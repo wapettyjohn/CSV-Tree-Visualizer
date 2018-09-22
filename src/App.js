@@ -5,15 +5,15 @@ import Tree from './Tree.js';
 export default class App extends React.Component {
 	state = {
 		data: '',
-		root: {children:[]},
+		root: { children:[] },
 		sidebarDisplay: 'hidden',
 	}
 
 	/**
 	* @param {string} data
-	* @return {Object}
+	* @return {Array}
 	*/
-	handleData = (data) => {
+	parseData = (data) => {
 		// init array of vertices to build
 		let vertices = [];
 		// trim whitewspace and split text into rows
@@ -43,27 +43,28 @@ export default class App extends React.Component {
 				vertex => vertex.id === parseInt(cols[3])
 			)[0];
 			if (newVertex != parent) {
-				// push newVertex to array of siblings
+				// push newVertex to parent's children (add newVertex as a sibling)
 				parent.children	.push(newVertex);
 			}
 		}
 
-		// root is the unique element with itself as a child vertex (self-loop)
-		const root = vertices.filter(
-			vertex => vertex.children[vertex.id]
-		)[0];
-
-		return root;
+		return vertices;
 	}
 
-	onUpdate = (val) => {
-    this.setState({
-      data: val
-    })
-	};
+	/**
+	* @param {Array} vertices
+	* @return {Object}
+	*/
+	getRoot = (vertices) => {
+		return vertices.filter(
+			vertex => vertex.children[vertex.id]
+		)[0];
+	}
+
+	onUpdate = (val) => { this.setState({ data: val }) };
 
 	onSubmit = () => {
-		const root = this.handleData(this.state.data);
+		const root = this.getRoot(this.parseData(this.state.data));
 		this.setState({
 			root: root,
 			sidebarDisplay: 'displayed',
@@ -78,16 +79,12 @@ export default class App extends React.Component {
 				<div className='formWrapper'>
 					<Form onUpdate={this.onUpdate} onSubmit={this.onSubmit}/>
 				</div>
-				<div className={`treeWrapper ${this.state.sidebarDisplay}`}>
-					<div className='backArrowWrapper'>
-						<span onClick={this.hideSidebar} className='backArrow'>&rarr;</span>
-					</div>
-					<Tree root={this.state.root} />
-				</div>
+
 				<div className='sampleData'>
 					<h2 className='dataHeading'>Sample Data</h2>
+
 					<div className='dataWrapper'>
-						<pre>
+						<pre className='sample'>
 							1,#2FAE57,square,1<br />
 							2,#2FAE57,circle,1<br />
 							3,#2FAE57,circle,1<br />
@@ -98,7 +95,8 @@ export default class App extends React.Component {
 							8,#9FCF6F,square,5<br />
 							9,#9FCF6F,circle,3<br />
 						</pre>
-						<pre>
+
+						<pre className='sample'>
 							0,#9FCF6F,square,0<br />
 							1,#BA9D03,circle,0<br />
 							2,#BA9D03,square,1<br />
@@ -182,6 +180,15 @@ export default class App extends React.Component {
 							80,#D1BB6D,square,75<br />
 						</pre>
 					</div>
+				</div>
+				
+				<div className={`treeWrapper ${ this.state.sidebarDisplay}`}>
+					<div className='backArrowWrapper'>
+						<span onClick={this.hideSidebar} className='backArrow'>
+							&rarr;
+						</span>
+					</div>
+					<Tree root={this.state.root} />
 				</div>
 			</div>
 		);

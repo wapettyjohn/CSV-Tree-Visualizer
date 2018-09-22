@@ -6,20 +6,64 @@
 
     <style>
       body {
-        background: #7F7FD5;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         margin: 0;
         min-height: 100vh;
         overflow-x: hidden;
+        font-size: 15px;
+        background: rgb(0,97,158);
+      }
+
+      div.container {
+        width: 94%;
+        margin: 3% auto;
+      }
+
+      button {
+        width: 27%;
+        display: block;
+        margin: 0 auto;
+        border: none;
+        padding: 5%;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: rgb(218,218,218);
+        margin-top: 5%;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        color: white;
+        background-color: rgb(158, 158, 158);
+      }
+
+      pre {
+        background: rgb(218,218,218);
+        margin: 0;
+        padding: 3%;
+        width: 19%;
+        text-align: center;
+        font-size: 15px;
+        border: solid 10px rgb(158,158,158);
       }
 
       div.hidden {
-        left: 61.803398875%;
+        right: -62%;
+      }
+
+      div.sampleData {
+        width: 62%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: start;
+        padding: 7% 0;
+        background-color: white;
+        border-top: solid rgb(0,97,158) 12px;
+        border-bottom: solid rgb(0,97,158) 12px;
       }
 
       div.displayed {
-        left: 0;
+        right: 0;
       }
 
       div.app {
@@ -27,28 +71,62 @@
       }
 
       div.formWrapper {
-        width: 38.196601125%;
-        height: 100vh;
+        width: 38%;
+        height: 215vh;
+        background: rgb(218,218,218);
+        border: solid rgb(218,218,218) 6px;
       }
 
       div.treeWrapper {
-        min-height: 100vh;
+        top: 0;
+        min-height: 203vh;
         background-color: white;
-        width: 61.803398875%;
+        width: 62%;
         text-align: center;
-        padding: 24px 0;
-        position: relative;
-        transition: left 0.75s;
+        position: absolute;
+        padding: 7% 0;
+        transition: right 0.75s;
+        border-left: solid 3px rgb(157, 157, 157);
       }
 
       form.form {
-        margin: 0 auto;
-        width: 61.803398875%;
+        margin: 18% auto 0;
+        padding: 10% 10% 4%;
+        width: 62%;
+        background-color: rgb(0,97,158);
+        border-radius: 10%;
+        border: solid 6px white;
+      }
+
+      span.backArrow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 60px;
+        cursor: pointer;
+        margin: 1%;
+        border: solid rgb(158,158,158) 3px;
+        padding: 0.5% 1%;
+        color: rgb(158,158,158);
+        border-radius: 100%;
+        transition: background-color 0.2s;
+        transition: border-color 0.2s;
+      }
+
+      span.backArrow:hover {
+        border-color: rgb(218, 218, 218);
+        color: white;
+        background-color: rgb(218, 218, 218);
       }
 
       textarea.textarea {
         height: 38vh;
         width: 100%;
+        text-align: center;
+        font-size: 15px;
+        padding-top: 25%;
+        resize: none;
+        border: none;
       }
       div.treeContainer {
         display: inline-block;
@@ -98,6 +176,6 @@
     </style>
 </head>
 <body>
-    <div id="container"></div>
+    <div class='container' id='container'></div>
 </body>
 </html>

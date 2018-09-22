@@ -20,7 +20,7 @@ export default class Form extends React.Component {
 		return (
 			<form className="form">
 				<textarea className="textarea"
-					placeholder='Comma separated values...'
+					placeholder='Enter comma-separated values...'
 					value={this.state.data}
 					onChange={this.update}
 				>

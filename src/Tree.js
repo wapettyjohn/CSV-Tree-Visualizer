@@ -1,31 +1,34 @@
 import React from 'react';
 
-export default class Tree extends React.Component {
-	renderTree(root) {
-		if (root.children) {
+const Tree = (props) => {
+	const recurse = (vertex) => {
+		if (vertex.children) {
 			return (
 				<React.Fragment>
-					<span className={`rootId ${root.shape}`} style={{backgroundColor: root.color}}>{root.id}</span>
+					<span
+						className={`vertexId ${vertex.shape}`}
+						style={{backgroundColor: vertex.color}}>{vertex.id}
+					</span>
+
 					<ul className='tree'>
-						{root.children.map(child => (
+						{vertex.children.map(child => (
 							<li className='vertex' key={child.id}>
-								{this.renderTree(child)}
+								{recurse(child)}
 							</li>
 						))}
 					</ul>
 				</React.Fragment>
 			);
-		}
-		else {
-			return <span className='rootId'>{root.id}</span>;
+		} else {
+			return <span className='vertexId'>{vertex.id}</span>;
 		}
 	}
 
-	render() {
-		return (
-			<div className="treeContainer">
-				{this.renderTree(this.props.root)}
-			</div>
-		);
-	}
+	return (
+		<div className="treeContainer">
+			{recurse(props.root)}
+		</div>
+	);
 }
+
+export default Tree;

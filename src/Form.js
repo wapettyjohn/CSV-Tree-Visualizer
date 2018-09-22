@@ -3,16 +3,15 @@ import React from 'react';
 export default class Form extends React.Component {
 	state = {
 		data: '',
-		sidebarDisplay: 'hidden'
 	};
 
-	update = (event) => {
-    this.props.onUpdate(event.target.value);
-    this.setState({data: event.target.value});
+	update = (e) => {
+    this.props.onUpdate(e.target.value);
+    this.setState({data: e.target.value});
   };
 
-	submit = (event) => {
-		event.preventDefault();
+	submit = (e) => {
+		e.preventDefault();
 		this.props.onSubmit();
 	}
 
@@ -22,9 +21,9 @@ export default class Form extends React.Component {
 				<textarea className="textarea"
 					placeholder='Enter comma-separated values...'
 					value={this.state.data}
-					onChange={this.update}
-				>
+					onChange={this.update}>
 				</textarea>
+
 				<button onClick={this.submit}>Submit</button>
 			</form>
 		);

@@ -9,17 +9,18 @@ export default class App extends React.Component {
 		sidebarDisplay: 'hidden',
 	}
 
-	onUpdate = (val) => {
-    this.setState({
-      data: val
-    })
-  };
-
+	/**
+	* @param {string} data
+	* @return {Object}
+	*/
 	handleData = (data) => {
-		let vertices = [];  // init array of vertices to build
-		const rows = data.trim().split('\n'); // split text into rows
+		// init array of vertices to build
+		let vertices = [];
+		// trim whitewspace and split text into rows
+		const rows = data.trim().split('\n');
 		for (const row of rows) {
-			const cols = row.split(','); // split each row into columns
+			// split each row into columns
+			const cols = row.split(',');
 			const newVertex = {
 				id: parseInt(cols[0]),
 				color: cols[1],
@@ -28,18 +29,22 @@ export default class App extends React.Component {
 			};
 			/*
 			 * push newVertex onto vertices array before setting its parent
-			 * in case it's the root, when it will be its own parent
+			 * since it might be the root, in which case it will be its own parent
 			 */
 			vertices.push(newVertex);
 			/*
 			 * now that newVertex instance is added to vertices array
 			 * we can safely look for the newVertex's parent
 			 */
+
+			// get parent vertex
 			const parent = vertices.filter(
-				vertex => vertex.id === parseInt(cols[3]) // find parent by id
-			)[0]; // get parent vertex
+				// find parent by id
+				vertex => vertex.id === parseInt(cols[3])
+			)[0];
 			if (newVertex != parent) {
-				parent.children	.push(newVertex); // push newVertex to array of siblings
+				// push newVertex to array of siblings
+				parent.children	.push(newVertex);
 			}
 		}
 
@@ -51,6 +56,12 @@ export default class App extends React.Component {
 		return root;
 	}
 
+	onUpdate = (val) => {
+    this.setState({
+      data: val
+    })
+	};
+
 	onSubmit = () => {
 		const root = this.handleData(this.state.data);
 		this.setState({
@@ -59,7 +70,7 @@ export default class App extends React.Component {
 		});
 	}
 
-	foo = () => this.setState({ sidebarDisplay: 'hidden' });;
+	hideSidebar = () => this.setState({ sidebarDisplay: 'hidden' });;
 
 	render() {
 		return (
@@ -69,8 +80,8 @@ export default class App extends React.Component {
 				</div>
 				<div className={`treeWrapper ${this.state.sidebarDisplay}`}>
 					<div className='backArrowWrapper'>
-						<span onClick={this.foo} className='backArrow'>&rarr;</span>
-					</div>	
+						<span onClick={this.hideSidebar} className='backArrow'>&rarr;</span>
+					</div>
 					<Tree root={this.state.root} />
 				</div>
 				<div className='sampleData'>

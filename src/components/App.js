@@ -9,14 +9,16 @@ export default class App extends React.Component {
 		sidebarDisplay: 'hidden',
 	}
 
+	/* Static Methods */
+
 	/**
 	* @param {string} data
 	* @return {Array}
 	*/
-	parseData = (data) => {
+	static parseData = (data) => {
 		// init array of vertices to build
 		let vertices = [];
-		// trim whitewspace and split text into rows
+		// trim whitespace and split text into rows
 		const rows = data.trim().split('\n');
 		for (const row of rows) {
 			// split each row into columns
@@ -55,16 +57,16 @@ export default class App extends React.Component {
 	* @param {Array} vertices
 	* @return {Object}
 	*/
-	getRoot = (vertices) => {
-		return vertices.filter(
-			vertex => vertex.children[vertex.id]
-		)[0];
-	}
+	static getRoot = (vertices) => vertices.filter(
+		vertex => vertex.children[vertex.id]
+	)[0];
 
-	onUpdate = (val) => { this.setState({ data: val }) };
+	/* Mutator methods */
+
+	onUpdate = (val) => this.setState({ data: val });
 
 	onSubmit = () => {
-		const root = this.getRoot(this.parseData(this.state.data));
+		const root = App.getRoot(App.parseData(this.state.data));
 		this.setState({
 			root: root,
 			sidebarDisplay: 'displayed',
@@ -181,7 +183,7 @@ export default class App extends React.Component {
 						</pre>
 					</div>
 				</div>
-				
+
 				<div className={`treeWrapper ${ this.state.sidebarDisplay}`}>
 					<div className='backArrowWrapper'>
 						<span onClick={this.hideSidebar} className='backArrow'>

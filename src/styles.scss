@@ -1,8 +1,18 @@
+/* Sass variables */
+
+$blue: rgb(0, 97, 158);
+$lightGray: rgb(218, 218, 218);
+$darkGray: rgb(158, 158, 158);
+
+/* Utility classes */
+
 div.hidden { right: calc(-62% - 3px); }
 div.displayed { right: 0; }
 
+/* General styles */
+
 body {
-	background: rgb(0,97,158);
+	background: $blue;
 	font-size: 15px;
 	margin: 0;
   min-height: 100vh;
@@ -16,14 +26,16 @@ div.container {
 
 div.app { display: flex; }
 
+/* Form component styles */
+
 div.formWrapper {
-	background: rgb(218,218,218);
-  border: solid rgb(218,218,218) 6px;
+	background: $lightGray;
+  border: solid $lightGray 6px;
 	height: 215vh;
 	width: 38%;
 
 	form.form {
-		background-color: rgb(0,97,158);
+		background-color: $blue;
 		border: solid 6px white;
 		border-radius: 10%;
 	  width: 62%;
@@ -42,7 +54,7 @@ div.formWrapper {
 	}
 
 	button.submit {
-		background-color: rgb(218,218,218);
+		background-color: $lightGray;
 		border: none;
 		cursor: pointer;
 		font-size: 15px;
@@ -55,20 +67,22 @@ div.formWrapper {
 	  transition: background-color 0.2s;
 
 		&:hover {
-			background-color: rgb(158, 158, 158);
+			background-color: $darkGray;
 			color: white;
 		}
 	}
 }
 
+/* Sample data styles */
+
 div.sampleData {
   background-color: white;
-  border-top: solid rgb(0,97,158) 12px;
-  border-bottom: solid rgb(0,97,158) 12px;
+  border-top: solid $blue 12px;
+  border-bottom: solid $blue 12px;
 	width: 62%;
 
 	h2.dataHeading {
-		background: rgb(158, 158, 158);
+		background: $darkGray;
 		color: white;
 		font-family: sans-serif;
 		margin: 0 0 5%;
@@ -82,8 +96,8 @@ div.sampleData {
 		justify-content: space-evenly;
 
 		pre.sample {
-		  background: rgb(218,218,218);
-			border: solid 10px rgb(158,158,158);
+		  background: $lightGray;
+			border: solid 10px $darkGray;
 			font-size: 15px;
 			width: 19%;
 			margin: 0;
@@ -94,9 +108,11 @@ div.sampleData {
 	}
 }
 
+/* Tree component styles */
+
 div.treeWrapper {
 	background-color: white;
-	border-left: solid 3px rgb(157, 157, 157);
+	border-left: solid 3px $darkGray;
 	min-height: 228vh;
 	padding-bottom: 3%;
 	position: absolute;
@@ -106,15 +122,15 @@ div.treeWrapper {
   transition: right 0.75s;
 
 	div.backArrowWrapper {
-		background: rgb(158,158,158);
+		background: $darkGray;
 		height: 100%;
 	  margin-bottom: 6%;
 	  padding-bottom: 11.5%;
 
 		span.backArrow {
-			border: solid rgb(255,255,255) 2px;
+			border: solid white 2px;
 			border-radius: 100%;
-			color: rgb(255,255,255);
+			color: white;
 			cursor: pointer;
 			font-size: 31px;
 			position: absolute;
@@ -126,8 +142,8 @@ div.treeWrapper {
 		  transition: border-color 0.2s;
 
 			&:hover {
-				background-color: rgb(218, 218, 218);
-				border-color: rgb(218, 218, 218);
+				background-color: $lightGray;
+				border-color: $lightGray;
 			  color: white;
 			}
 		}

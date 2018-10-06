@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import App from './components/App.js';
+import Form from './components/Form.js';
 
 const smallCsv = fs.readFileSync(path.join(__dirname, '../small.csv'), 'utf8');
 const bigCsv = fs.readFileSync(path.join(__dirname, '../big.csv'), 'utf8');

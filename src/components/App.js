@@ -5,7 +5,7 @@ import Tree from './Tree.js';
 export default class App extends React.Component {
 	state = {
 		data: '',
-		root: { children:[] },
+		root: { children: [] },
 		sidebarDisplay: 'hidden',
 	}
 
@@ -63,7 +63,7 @@ export default class App extends React.Component {
 
 	/* Mutator methods */
 
-	onUpdate = (val) => this.setState({ data: val });
+	onUpdate = (val) => this.setState({ data: val, });
 
 	onSubmit = () => {
 		const root = App.getRoot(App.parseData(this.state.data));
@@ -73,7 +73,7 @@ export default class App extends React.Component {
 		});
 	}
 
-	hideSidebar = () => this.setState({ sidebarDisplay: 'hidden' });;
+	hideSidebar = () => this.setState({ sidebarDisplay: 'hidden', });;
 
 	render() {
 		return (

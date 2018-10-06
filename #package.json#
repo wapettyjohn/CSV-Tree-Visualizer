@@ -1,4 +1,4 @@
-{
+"deploy": "gh-pages -d dist"{
   "name": "csv-tree-visualizer",
   "version": "1.0.0",
   "description": "Visualize CSV data as a tree",
